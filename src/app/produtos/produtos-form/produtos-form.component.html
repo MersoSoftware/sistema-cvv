@@ -1,0 +1,94 @@
+<h1 class="mt-4">{{title}}</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">{{produtos.id ? 'Editar produto' : 'Cadastrar produto'}}</li>
+</ol>
+<div class="container">
+
+    <form #produtoForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="divrow">
+            <div class="divcol-md-12">
+                <div class="alert alert-success d-flex align-items-center" role="alert" *ngIf="success== true">
+                    <div>
+                        <i class="fas fa-check-circle"></i> Produtos salvo com sucesso!
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="alert alert-warning  d-flex align-items-center" role="alert" *ngFor="let erro of erros">
+                    <div>
+                        <i class="fas fa-exclamation-triangle"></i> {{erro}}
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="produtos.id">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="">Id:</label>
+                    <input type="text" class="form-control" [ngModel]="produtos.id" name="id" disabled="true">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Nome</label>
+                    <input type="text" class="form-control" [(ngModel)]="produtos.nome" name="nome">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Preço:*</label>
+                    <input type="text" class="form-control" [(ngModel)]="produtos.preco" name="descricao">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Status:*</label>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                          Dropdown
+                        </button>
+                        <div class="dropdown-menu">
+                          <button class="dropdown-item" type="button"></button>
+                         
+                        </div>
+                      </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Descrição:*</label>
+                    <textarea type="text" class="form-control" [(ngModel)]="produtos.descricao"
+                        name="tecnologia"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <button class="btn btn-success " *ngIf="!produtos.id " type="submit">
+                    <i class="fa fa-save"></i> Salvar</button>
+
+                <button class="btn btn-info ml-2" *ngIf="produtos.id " type="submit">
+                    <i class="fa fa-save"></i> Atualizar</button>
+            </div>
+            <div>
+                <button class="btn btn-danger ml-2" routerLink="/produtos-lista" type="submit">
+                    <i class="fa fa-save"></i> Voltar</button>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>
