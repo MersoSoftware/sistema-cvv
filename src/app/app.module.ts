@@ -6,13 +6,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { LayoutSidbarComponent } from './layout-sidbar/layout-sidbar.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { ProdutosService } from './produtos.service';
+import { FooterComponent } from './componentes/footer/footer.component';
+import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
+import { SidebarComponent } from './componentes/sidebar/sidebar.component';
+
+import { HomeComponent } from './componentes/home/home.component';
+
+
+import { ProdutosService } from './core/share/services/produtos.service';
 import { ProdutosModule } from './produtos/produtos.module';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -23,7 +28,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SidebarComponent,
     FooterComponent,
     HomeComponent,
-    LayoutSidbarComponent
+    SidebarComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +38,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HttpClientModule,
     AppRoutingModule,
     ProdutosModule,
-    
+    ReactiveFormsModule,
+    FormsModule
+
   ],
   exports:[
     NavBarComponent,

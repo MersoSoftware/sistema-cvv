@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as jQuery from 'jquery';
+import { AuthGuard } from './core/share/guards/auth.guard';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
   title = 'sistema';
   href: any;
+mostrarMenu:boolean = false;
 
-  
+constructor(private authGuard:AuthGuard){
+
+}
   ngAfterViewInit() {
     (($) => {
       "use strict";
@@ -20,7 +25,7 @@ export class AppComponent {
                   $(this).addClass("active");
               }
           });
-  
+
       // Toggle the side navigation
       $("#sidebarToggle").on("click", function(e) {
           e.preventDefault();
@@ -28,5 +33,14 @@ export class AppComponent {
       });
   })(jQuery);
   }
+
+
+  ngOnInit() {
+    this.authGuard.mostrarMenuEmitter.subscribe(
+      mostrar => this.mostrarMenu = mostrar
+    );
+
+  }
+
 }
 

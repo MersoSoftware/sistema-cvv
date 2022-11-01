@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdutosService} from '../../produtos.service';
+import { ProdutosService} from '../../core/share/services/produtos.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Produto } from 'src/share/produto';
@@ -12,9 +12,9 @@ import { Produto } from 'src/share/produto';
   styleUrls: ['./produtos-form.component.css']
 })
 export class ProdutosFormComponent implements OnInit {
-  
+
   title: string ="Cadastro de Produtos"
-  
+
   produtos!: Produto;
   success: boolean = false;
   erros!: string[];
@@ -25,10 +25,10 @@ export class ProdutosFormComponent implements OnInit {
     //Declaração de service
     private produtoService: ProdutosService,
     private activatedRoute :ActivatedRoute
- 
+
   ) {
     this.produtos = new Produto();
-    
+
    }
 
   ngOnInit(): void {
@@ -44,7 +44,7 @@ export class ProdutosFormComponent implements OnInit {
           )}
        });
   }
-  
+
   onSubmit(){
     this.produtoService.salvar(this.produtos)
     .subscribe(response =>{
@@ -53,8 +53,8 @@ export class ProdutosFormComponent implements OnInit {
     },errorResponse =>{
       this.success = true;
       this.erros = errorResponse.error.errors;
-      
+
     })
   }
-  
+
 }

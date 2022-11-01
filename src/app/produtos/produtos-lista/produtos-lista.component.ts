@@ -1,4 +1,4 @@
-import {ProdutosService} from '../../produtos.service';
+import {ProdutosService} from '../../core/share/services/produtos.service';
 import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/share/produto';
 
@@ -16,14 +16,14 @@ export class ProdutosListaComponent implements OnInit {
   mensagemErro!: string;
 
   constructor(private produtoService: ProdutosService) {
- 
+
    }
 
   ngOnInit(): void {
     this.produtoService
     .allProdutos()
     .subscribe(response=> this.produtos = response);
-  
+
   }
   preparaDelete(produto: Produto){
     this.produtoSelecionado = produto;
@@ -37,7 +37,7 @@ export class ProdutosListaComponent implements OnInit {
         ( erro: any) => this.mensagemErro ="Ocorreu erro ao deletar produto."
     });
   }
-  
+
 
 
 }

@@ -1,17 +1,18 @@
-<app-nav-bar></app-nav-bar>
-<div id="layoutSidenav">
-<app-sidebar></app-sidebar>
-<div id="layoutSidenav_content">
+<app-nav-bar  *ngIf="mostrarMenu"></app-nav-bar>
+<div *ngIf="mostrarMenu" id="layoutSidenav">
+<app-sidebar *ngIf="mostrarMenu"></app-sidebar>
+<div *ngIf="mostrarMenu"  id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
-            <router-outlet></router-outlet>
-           
-           
-           
+
+
+          <router-outlet  *ngIf="mostrarMenu"></router-outlet>
+
         </div>
-  
+
     </main>
-    <app-footer></app-footer>
+    <app-footer  *ngIf="mostrarMenu"></app-footer>
 </div>
 </div>
 
+<router-outlet></router-outlet>
